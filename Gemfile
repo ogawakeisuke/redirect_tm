@@ -6,8 +6,8 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', group: [:development, :test]
+gem 'sqlite-ruby'
 gem 'heroku'
-#gem 'pg'
 
 group :production do  
 gem "pg"  
