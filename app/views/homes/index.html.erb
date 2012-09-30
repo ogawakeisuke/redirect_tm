@@ -17,15 +17,13 @@
 <br>
 <table>
 <tr bgcolor="#cccccc">
-  <th><br></th>
   <th>本当のurl</th>
   <th>たまきURL</th>
  </tr>
- <tr align=center>
-    <td></td>
-    <% @pairlinks.each do |pl|%>
+<% @pairlinks.each do |pl|%>
+ 	<tr align=center>
       <td><%=pl.url  %></td>
       <td><%=pl.tamaki_url %></td>
-    <%end%>
- </tr>
+ 	</tr>
+ <%end%>
 </table>

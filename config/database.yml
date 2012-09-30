@@ -19,7 +19,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  encoding: unicode
+  adapter: postgresql
+  database: postgres://nrlztcpcpclhmt:QEO23JFq-XXc9Jh6povSkzSW28@ec2-54-243-212-154.compute-1.amazonaws.com:5662/d1konag2jpp52b
+  username: syoukaro@gmail.com
+  password: osimam56
+  host: sheltered-eyrie-5996.herokuapp.com
