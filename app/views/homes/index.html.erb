@@ -1,0 +1,31 @@
+<h1><%="お前のたまきURLは" unless @your_tamki_url==blank? %><%=@your_tamki_url unless @your_tamki_url==blank? %></h1>
+
+<br>
+<%=form_tag :action => "create" do%>
+ <form action="create" method="post">
+		<div class="registerContent">				
+			<fieldset class="name">
+				<legend>おまえ今からURLいれろ:</legend>
+				<label for="firstName">ここにURLいれろ:</label>
+				<%=text_field_tag :native_url,"",:size=>"128"%>
+			</fieldset>
+		</div>
+	<%= submit_tag "登録" %>
+<%end%>
+
+<br>
+<br>
+<table>
+<tr bgcolor="#cccccc">
+  <th><br></th>
+  <th>本当のurl</th>
+  <th>たまきURL</th>
+ </tr>
+ <tr align=center>
+    <td></td>
+    <% @pairlinks.each do |pl|%>
+      <td><%=pl.url  %></td>
+      <td><%=pl.tamaki_url %></td>
+    <%end%>
+ </tr>
+</table>
