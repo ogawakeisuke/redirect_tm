@@ -42,11 +42,11 @@ private
   
   def auth
     name = "tamaki"
-    pass = "c55f951efa54f9182da3bf337ff765e7709a58fa"
+    pass = "tamaki"
 
     authenticate_or_request_with_http_basic() do |n, p|
       n == name &&
-        Digest::SHA.hexdigest(p) == pass
+        p == pass
     end
   end
 
