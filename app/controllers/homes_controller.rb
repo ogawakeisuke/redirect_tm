@@ -46,7 +46,7 @@ private
 
     authenticate_or_request_with_http_basic() do |n, p|
       n == name &&
-        Digest**SHA.hexdigest(p) == pass
+        Digest::SHA.hexdigest(p) == pass
     end
   end
 
