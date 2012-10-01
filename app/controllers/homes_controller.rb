@@ -1,6 +1,9 @@
 # encoding: UTF-8
 
 class HomesController < ApplicationController
+  before_filter :auth, :only => "index" #basic認証
+
+
   def index
     @your_tamki_url = ""
 
@@ -34,6 +37,19 @@ class HomesController < ApplicationController
       redirect_to :action=>'index'
     end
   end
+
+private
+  
+  def auth
+    name = "tamaki"
+    pass = "c55f951efa54f9182da3bf337ff765e7709a58fa"
+
+    authenticate_or_request_with_http_basic() do |n, p|
+      n == name &&
+        Digest**SHA.hexdigest(p) == pass
+    end
+  end
+
 
 
 end
