@@ -24,7 +24,7 @@ class HomesController < ApplicationController
       @your_tamaki_url = "うまく生成できなかった。正直すまんかった。もう一回試して欲しい"
     end
 
-    @pairlinks = Pairlink.where(1)
+    @pairlinks = Pairlink.where(true)
     render "index"
 
   end
