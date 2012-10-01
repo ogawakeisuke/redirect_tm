@@ -1,4 +1,4 @@
-<h1><%="お前のたまきURLは" unless @your_tamki_url==blank? %><%=@your_tamki_url unless @your_tamki_url==blank? %></h1>
+<h1><%="お前のたまきURLは" unless @your_tamki_url==blank? %><%= request.protocol+""+""+request.host_with_port%>/<%=@your_tamki_url unless @your_tamki_url==blank? %></h1>
 
 <br>
 <%=form_tag :action => "create" do%>
