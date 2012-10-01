@@ -23,7 +23,7 @@
 <% @pairlinks.each do |pl|%>
  	<tr align=center>
       <td><%=pl.url  %></td>
-      <td><%=pl.tamaki_url %></td>
+      <td><%= request.protocol+""+""+request.host_with_port%>/<%=pl.tamaki_url %></td>
  	</tr>
  <%end%>
 </table>
