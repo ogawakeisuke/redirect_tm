@@ -4,7 +4,7 @@ class HomesController < ApplicationController
   def index
     @your_tamki_url = ""
 
-    @pairlinks = Pairlink.where(1)
+    @pairlinks = Pairlink.where(true)
 
     unless Pairlink.exists?
       #render :text => "no data"
