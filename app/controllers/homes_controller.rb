@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 class HomesController < ApplicationController
+  require 'addressable/uri'
   before_filter :auth, :only => "index" #basic認証
 
 
@@ -32,7 +33,9 @@ class HomesController < ApplicationController
   def jump
     @pairlink = Pairlink.find_by_tamaki_url(params[:id])
     if @pairlink
-      redirect_to(@pairlink.url)
+      redirect_url = Addressable::URI.parse(@pairlink.url)
+      redirect_url = redirect_url.normalize.to_s
+      redirect_to(redirect_url)
     else
       redirect_to :action=>'index'
     end
