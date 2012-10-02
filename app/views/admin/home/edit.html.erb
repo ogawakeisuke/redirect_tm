@@ -1,0 +1,34 @@
+<h1>Editing welcome</h1>
+
+<%= form_for @pairlink,:url => {:action => :update} do |f| %>
+  <% if @pairlink.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pairlink.errors.count, "error") %> prohibited this welcome from being saved:</h2>
+
+      <ul>
+      <% @pairlink.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :tamaki_url %><br />
+    <%= f.text_field :tamaki_url %>
+  </div>
+  <div class="field">
+    <%= f.label :digested_hash %><br />
+    <%= f.text_field :digested_hash %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', :action =>"show" ,:id => @pairlink.id  %> |
+<%= link_to 'Back', :action =>"index" %>

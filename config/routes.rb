@@ -1,5 +1,15 @@
 Tamakitan::Application.routes.draw do
 
+  namespace 'admin' do
+    get 'home' => "home#index"
+    get 'home/new' => "home#new"
+    get 'home/:id' => "home#show"
+    get 'home/:id/edit' => "home#edit"
+    post 'home' => "home#create"
+    put 'home/:id' => "home#update"
+    delete 'home/:id' => "home#destroy"
+  end
+
   get 'homes' => 'homes#index'
   get ':id' => 'homes#jump'
   post 'homes/create' => 'homes#create'

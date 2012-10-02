@@ -1,0 +1,29 @@
+<h1>Listing pairlinks</h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>url</th>
+    <th>tamaki_url</th>
+    <th>digested_hash</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pairlinks.each do |pairlink| %>
+  <tr>
+    <td><%= pairlink.id %></td>
+    <td><%= pairlink.url %></td>
+    <td><%= pairlink.tamaki_url %></td>
+    <td><%= pairlink.digested_hash %></td>
+    <td><%= link_to 'Show', "home/#{pairlink.id}" %></td>
+    <td><%= link_to 'Edit', "home/#{pairlink.id}/edit"%></td>
+    <td><%= link_to 'Destroy', "home/#{pairlink.id}", confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New', :action =>"new" %>

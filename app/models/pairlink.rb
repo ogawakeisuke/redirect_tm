@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class Pairlink < ActiveRecord::Base
-  attr_accessible :tamaki_url, :url
+  attr_accessible :tamaki_url, :url ,:digested_hash
   validates_uniqueness_of :tamaki_url
 
 

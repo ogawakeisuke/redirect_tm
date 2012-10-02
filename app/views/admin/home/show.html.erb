@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>id:</b>
+  <%= @pairlink.id %>
+</p>
+
+<p>
+  <b>url:</b>
+  <%= @pairlink.url %>
+</p>
+
+<p>
+  <b>Iroiro:</b>
+  <%= @pairlink.tamaki_url %>
+</p>
+
+<p>
+  <b>Iroiro:</b>
+  <%= @pairlink.digested_hash %>
+</p>
+
+
+<%= link_to 'Edit', :action =>"edit" ,:id => @pairlink.id  %> |
+<%= link_to 'Back', :action =>"index" %>
