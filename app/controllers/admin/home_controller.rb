@@ -1,5 +1,6 @@
 class Admin::HomeController < ApplicationController
  before_filter :auth, :only => "index"
+ layout 'admin'
  # GET /Pairlinks
   # GET /Pairlinks.json
   def index
