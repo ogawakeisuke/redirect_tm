@@ -1,31 +1,31 @@
-<h1><%="お前のたまきURLは" unless @your_tamki_url==blank? %><%= request.protocol+""+""+request.host_with_port%>/<%=@your_tamki_url unless @your_tamki_url==blank? %></h1>
+<div id="wrap" style="margin:0 auto;width:800px;">
+<h1 style="color: red;">たまきURL</h1>
 
 <br>
-<form class="ajax_post" action="/homes/create" method="post">
-		<div class="registerContent">				
-			<fieldset class="name">
-				<legend>おまえ今からURLいれろ:</legend>
-				<label for="firstName">ここにURLいれろ:</label>
-				<%=text_field_tag :native_url,"",:size=>"128"%>
-			</fieldset>
-		</div>
-	<%= submit_tag "登録" %>
-</form>
+  <form class="ajax_post" action="/homes/create" method="post">
+  		<div class="registerContent">				
+  			<fieldset class="name">
+  				<legend>おまえ今からURLいれろ:</legend>
+  				<label for="firstName">ここにURLいれろ:</label>
+  				<%=text_field_tag :native_url,"",:size=>"128"%>
+  			</fieldset>
+  		</div>
+  	<%= submit_tag "登録" %>
+  </form>
 
-<br>
-<div id="result"></div>
+  <br>
+  <div id="result"></div>
 
-<br>
+  <br>
 
-<table>
-<tr bgcolor="#cccccc">
-  <th>本当のurl</th>
-  <th>たまきURL</th>
- </tr>
-<% @pairlinks.each do |pl|%>
- 	<tr align=center>
-      <td><%=pl.url  %></td>
-      <td><%= request.protocol+""+""+request.host_with_port%>/<%=pl.tamaki_url %></td>
- 	</tr>
- <%end%>
-</table>
+  <table>
+  <tr bgcolor="#cccccc">
+    <th>たまきURL</th>
+   </tr>
+  <% @pairlinks.each do |pl|%>
+   	<tr align=center>
+        <td><%= link_to "#{request.protocol+""+""+request.host_with_port+pl.tamaki_url}" , "#{pl.url}" %></td>
+   	</tr>
+   <%end%>
+  </table>
+</div>
