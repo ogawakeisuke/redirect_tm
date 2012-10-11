@@ -7,7 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3', group: [:development, :test]
 gem 'heroku'
-#gem "pg"
+gem "pg"
 gem "addressable"
 
 
