@@ -8,7 +8,7 @@ class HomesController < ApplicationController
   def index
     @your_tamki_url = ""
 
-    @pairlinks = Pairlink.where(true)
+    @pairlinks = Pairlink.find(:all,:limit=>100)
 
     unless Pairlink.exists?
       #render :text => "no data"
@@ -19,15 +19,25 @@ class HomesController < ApplicationController
   def create
     native_url = params[:native_url]
 
+    #TODO berify paramaters
+    #not blank
+    #include http:
+    #without javascript
 
     @your_tamki_url = Pairlink.to_create(native_url)
     unless @your_tamki_url
       @your_tamaki_url = "うまく生成できなかった。正直すまんかった。もう一回試して欲しい"
     end
 
-    @pairlinks = Pairlink.where(true)
-    render "index"
+#    @pairlinks = Pairlink.where(true)
+#    render "index"
 
+    #response 
+    @response = {
+      :result => 'OK',
+      :tamaki_url => @your_tamki_url
+    }
+    render :json => @response.to_json
   end
 
   def jump

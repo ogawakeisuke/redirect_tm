@@ -1,8 +1,7 @@
 <h1><%="お前のたまきURLは" unless @your_tamki_url==blank? %><%= request.protocol+""+""+request.host_with_port%>/<%=@your_tamki_url unless @your_tamki_url==blank? %></h1>
 
 <br>
-<%=form_tag :action => "create" do%>
- <form action="create" method="post">
+<form class="ajax_post" action="/homes/create" method="post">
 		<div class="registerContent">				
 			<fieldset class="name">
 				<legend>おまえ今からURLいれろ:</legend>
@@ -11,10 +10,13 @@
 			</fieldset>
 		</div>
 	<%= submit_tag "登録" %>
-<%end%>
+</form>
 
 <br>
+<div id="result"></div>
+
 <br>
+
 <table>
 <tr bgcolor="#cccccc">
   <th>本当のurl</th>
