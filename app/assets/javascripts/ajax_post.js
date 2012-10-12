@@ -2,7 +2,7 @@ $(function(){
 
   $('.ajax_post').on('submit', function(e) {
     $this = $(this);
-    $("#result").html('<img src="loading.gif" width="10" height="10" alt="Now Loading..." />');
+    $(".result").html('<img src="loading.gif" width="10" height="10" alt="Now Loading..." />');
     $.ajax({
       url: $(this).attr('action'),
       type: "POST",
@@ -13,7 +13,7 @@ $(function(){
       },
       success: function(data) {
 //        $("#result").hide("slow");
-        $("#result").text(location.href + data.tamaki_url).show("slow");
+        $(".result").text(location.href + data.tamaki_url).show("slow");
       }
     });
     return false;
