@@ -22,6 +22,6 @@ production:
   encoding: unicode
   adapter: postgresql
   database: postgres://nrlztcpcpclhmt:QEO23JFq-XXc9Jh6povSkzSW28@ec2-54-243-212-154.compute-1.amazonaws.com:5662/d1konag2jpp52b
-  username: syoukaro@gmail.com
-  password: osimam56
+  username: ""
+  password: ""
   host: sheltered-eyrie-5996.herokuapp.com
