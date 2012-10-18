@@ -20,6 +20,16 @@ class HomesController < ApplicationController
     native_url = params[:native_url]
 
     #TODO berify paramaters
+    if state_params = validates_integration(native_url)
+      @response = {
+      :result => 'OK',
+      :tamaki_url => state_params
+    }
+    render :json => @response.to_json
+    #
+    logger.debug "----owattete hoshiiiii-----"
+      
+    end
     #not blank
     #include http:
     #without javascript
@@ -63,6 +73,11 @@ private
     end
   end
 
+  def validates_integration(params)
+    return "おまえ空だぞ、なにしてんの" if params.blank?
+    return "javascriptとか書くなよ、なにしてんの" if params.to_s =~ /<script>/ || /javascript/
 
+    return false #all clear
+  end
 
 end
