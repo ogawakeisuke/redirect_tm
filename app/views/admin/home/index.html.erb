@@ -13,12 +13,12 @@
   </tr>
 
 <% @pairlinks.each do |pairlink| %>
-  <tr>
+  <tr bgcolor=<%=pairlink.state== 1 ? "#FFFFFF" : "#cccccc" %>>
     <td><%= pairlink.id %></td>
     <td><%= url_omitize(pairlink.url) %></td>
     <td><%= pairlink.tamaki_url %></td>
     <td><%= pairlink.digested_hash %></td>
-    <td bgcolor=<%=pairlink.state== 1 ? "#FFFFFF" : "#cccccc" %> ><%= pairlink.state ? pairlink.state : "?" %></td>
+    <td><%= pairlink.state ? pairlink.state : "?" %></td>
     <td><%= link_to 'Show', "home/#{pairlink.id}" %></td>
     <td><%= link_to 'Edit', "home/#{pairlink.id}/edit"%></td>
     <td><%= link_to 'Destroy', "home/#{pairlink.id}", confirm: 'Are you sure?', method: :delete %></td>
