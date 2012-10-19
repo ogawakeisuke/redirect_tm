@@ -33,6 +33,15 @@ class Pairlink < ActiveRecord::Base
     return false #成功
   end
 
+  def self.delete_all
+    pairlinks = Pairlink.all
+    pairlinks.each do |pair|
+      pair.destroy
+    end
+  end
+
+
+
   def find_hash
     pair = self
     hash = pair.digested_hash
