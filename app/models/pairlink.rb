@@ -3,6 +3,7 @@
 class Pairlink < ActiveRecord::Base
   attr_accessible :tamaki_url, :url ,:digested_hash ,:state
   validates_uniqueness_of :tamaki_url
+  validates :url, :length => {:maximum => 140 } 
 
 
   def self.to_create(_url)
