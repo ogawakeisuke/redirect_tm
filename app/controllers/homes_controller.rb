@@ -19,15 +19,12 @@ class HomesController < ApplicationController
     native_url = params[:native_url]
 
     #berify paramaters 方針:最低限のblankは面倒なのでここではじいて、あとはto_create内でstate処理にする
-    if native_url.blank?
-      render :json => {:result => 'ERROR' , :tamaki_url => "空だ"} and return
+    if status = Pairlink.critical_validation(native_url)
+      render :json => {:result => 'ERROR' , :tamaki_url => status } and return
     end
 
     #processing
     @your_tamki_url = Pairlink.to_create(native_url)
-    unless @your_tamki_url
-      @your_tamaki_url = "うまく生成できなかった。正直すまんかった。もう一回試して欲しい"
-    end
 
     #response 
     @response = {

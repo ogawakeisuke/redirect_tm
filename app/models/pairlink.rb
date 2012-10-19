@@ -8,28 +8,28 @@ class Pairlink < ActiveRecord::Base
 
   def self.to_create(_url)
     pair = Pairlink.new
-
     pair.url = _url
     pair.digested_hash = Digest::SHA1.hexdigest(_url)
-
-    pair.state = pair.validates_integration
+    pair.state = pair.set_to_states
 
     if tamaki_url = pair.find_hash
       return tamaki_url
     end
-
     unless tamaki_url = pair.gen_tamaki_url
       return false
     end
+    pair.tamaki_url = tamaki_url  
 
-    pair.tamaki_url = tamaki_url
-      
-
-    unless pair.save!
-      return false
-    end
+    pair.save!
     return pair.tamaki_url
+  end
 
+  #本来model_varidatesで行う事をメソッドで二度手間かけてエラーjsonを作る目的
+  def self.critical_validation(param)
+    return "なんか書け" if param.blank?
+    return "長過ぎ" if param.length >= 140
+    
+    return false #成功
   end
 
   def find_hash
@@ -61,13 +61,14 @@ class Pairlink < ActiveRecord::Base
     end  
   end
 
-  def validates_integration
+  def set_to_states
     return 0  if self.url.blank?
     return 0  if self.url.to_s =~ /javascript/
     return 0  if self.url.to_s =~ /<script>/
     return 0  if self.url.to_s =~ /.*.rar/
     return 0  if self.url.to_s =~ /.*.zip/
     return 0  if self.url.to_s =~ /.*.exe/
+    return 0  if self.url.to_s =~ /.*.lzh/
 
     return 1 #all clear
   end
