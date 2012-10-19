@@ -18,9 +18,10 @@ class Pairlink < ActiveRecord::Base
     unless tamaki_url = pair.gen_tamaki_url
       return false
     end
+    
     pair.tamaki_url = tamaki_url  
-
     pair.save!
+
     return pair.tamaki_url
   end
 
@@ -28,7 +29,7 @@ class Pairlink < ActiveRecord::Base
   def self.critical_validation(param)
     return "なんか書け" if param.blank?
     return "長過ぎ" if param.length >= 140
-    
+
     return false #成功
   end
 
