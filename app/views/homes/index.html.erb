@@ -21,7 +21,7 @@
    </tr>
   <% @pairlinks.each do |pl|%>
    	<tr align=center>
-        <td><%= link_to "#{request.protocol+""+""+request.host_with_port+pl.tamaki_url}" , "#{pl.url}" %></td>
+        <td><%= link_to "#{request.protocol+""+""+request.host_with_port+pl.tamaki_url}" , "#{pl.url}",:target => "blank" %></td>
    	</tr>
    <%end%>
   </table>
