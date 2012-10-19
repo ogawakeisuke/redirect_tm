@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class Pairlink < ActiveRecord::Base
-  attr_accessible :tamaki_url, :url ,:digested_hash
+  attr_accessible :tamaki_url, :url ,:digested_hash ,:state
   validates_uniqueness_of :tamaki_url
 
 
@@ -12,8 +12,6 @@ class Pairlink < ActiveRecord::Base
     pair.digested_hash = Digest::SHA1.hexdigest(_url)
 
     pair.state = pair.validates_integration
-    logger.debug "-----state!!!----"
-    logger.debug pair.state
 
     if tamaki_url = pair.find_hash
       return tamaki_url
