@@ -7,8 +7,7 @@ class HomesController < ApplicationController
 
   def index
     @your_tamki_url = ""
-
-    @pairlinks = Pairlink.find(:all,:limit=>100)
+    @pairlinks = Pairlink.where(:state => 1).limit(100)
 
     unless Pairlink.exists?
       #render :text => "no data"
@@ -19,28 +18,16 @@ class HomesController < ApplicationController
   def create
     native_url = params[:native_url]
 
-    #TODO berify paramaters
-    if state_params = validates_integration(native_url)
-      @response = {
-      :result => 'OK',
-      :tamaki_url => state_params
-    }
-    render :json => @response.to_json
-    #
-    logger.debug "----owattete hoshiiiii-----"
-      
+    #berify paramaters 方針:最低限のblankは面倒なのでここではじいて、あとはto_create内でstate処理にする
+    if native_url.blank?
+      render :json => {:result => 'ERROR' , :tamaki_url => "空だ"} and return
     end
-    #not blank
-    #include http:
-    #without javascript
 
+    #processing
     @your_tamki_url = Pairlink.to_create(native_url)
     unless @your_tamki_url
       @your_tamaki_url = "うまく生成できなかった。正直すまんかった。もう一回試して欲しい"
     end
-
-#    @pairlinks = Pairlink.where(true)
-#    render "index"
 
     #response 
     @response = {
@@ -63,6 +50,7 @@ class HomesController < ApplicationController
 
 private
   
+  #authentication
   def auth
     name = "tamaki"
     pass = "tamaki"
@@ -71,13 +59,6 @@ private
       n == name &&
         p == pass
     end
-  end
-
-  def validates_integration(params)
-    return "おまえ空だぞ、なにしてんの" if params.blank?
-    return "javascriptとか書くなよ、なにしてんの" if params.to_s =~ /<script>/ || /javascript/
-
-    return false #all clear
   end
 
 end

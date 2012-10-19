@@ -11,6 +11,10 @@ class Pairlink < ActiveRecord::Base
     pair.url = _url
     pair.digested_hash = Digest::SHA1.hexdigest(_url)
 
+    pair.state = pair.validates_integration
+    logger.debug "-----state!!!----"
+    logger.debug pair.state
+
     if tamaki_url = pair.find_hash
       return tamaki_url
     end
@@ -20,11 +24,13 @@ class Pairlink < ActiveRecord::Base
     end
 
     pair.tamaki_url = tamaki_url
+      
 
     unless pair.save!
       return false
     end
     return pair.tamaki_url
+
   end
 
   def find_hash
@@ -43,19 +49,29 @@ class Pairlink < ActiveRecord::Base
     const_tamaki = ["た","ま","き"]
     url = self.url
 
-      code = (
-        Array.new(rand(32)+1) do 
-         const_tamaki[rand(3)]
-        end  
-      ).join
+    code = (
+      Array.new(rand(32)+1) do 
+       const_tamaki[rand(3)]
+      end  
+    ).join
 
-      unless Pairlink.exists?(:tamaki_url => code)
-        return code
-      else
-        return false
-      end
+    unless Pairlink.exists?(:tamaki_url => code)
+      return code
+    else
+      return false
+    end  
   end
 
+  def validates_integration
+    return 0  if self.url.blank?
+    return 0  if self.url.to_s =~ /javascript/
+    return 0  if self.url.to_s =~ /<script>/
+    return 0  if self.url.to_s =~ /.*.rar/
+    return 0  if self.url.to_s =~ /.*.zip/
+    return 0  if self.url.to_s =~ /.*.exe/
+
+    return 1 #all clear
+  end
 
 end
 
