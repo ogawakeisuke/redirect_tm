@@ -7,7 +7,7 @@ class HomesController < ApplicationController
 
   def index
     @your_tamki_url = ""
-    @pairlinks = Pairlink.where(:state => 1).limit(100)
+    @pairlinks = Pairlink.where(:state => 1).limit(100).order("created_at DESC")
 
     unless Pairlink.exists?
       #render :text => "no data"

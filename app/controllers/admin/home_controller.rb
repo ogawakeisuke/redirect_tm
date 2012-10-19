@@ -3,7 +3,7 @@ class Admin::HomeController < ApplicationController
  # GET /Pairlinks
   # GET /Pairlinks.json
   def index
-    @pairlinks = Pairlink.all
+    @pairlinks = Pairlink.find(:all,:order=>"id ASC")
 
     respond_to do |format|
       format.html # index.html.erb
