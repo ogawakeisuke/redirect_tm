@@ -7,6 +7,7 @@ Tamakitan::Application.routes.draw do
     get 'home/:id/edit' => "home#edit"
     post 'home' => "home#create"
     put 'home/:id' => "home#update"
+    delete 'home' => "home#destroy_all"
     delete 'home/:id' => "home#destroy"
   end
 

@@ -3,7 +3,7 @@
 class Pairlink < ActiveRecord::Base
   attr_accessible :tamaki_url, :url ,:digested_hash ,:state
   validates_uniqueness_of :tamaki_url
-  validates :url, :length => {:maximum => 140 } 
+  validates :url, :length => {:maximum => 200 } 
 
 
   def self.to_create(_url)
@@ -28,7 +28,7 @@ class Pairlink < ActiveRecord::Base
   #本来model_varidatesで行う事をメソッドで二度手間かけてエラーjsonを作る目的
   def self.critical_validation(param)
     return "なんか書け" if param.blank?
-    return "長過ぎ" if param.length >= 140
+    return "長過ぎ" if param.length >= 200
 
     return false #成功
   end

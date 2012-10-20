@@ -84,6 +84,15 @@ class Admin::HomeController < ApplicationController
     end
   end
 
+    def destroy_all
+    Pairlink.delete_all
+
+    respond_to do |format|
+      format.html { redirect_to :action=>'index' }
+      format.json { head :no_content }
+    end
+  end
+
   def auth
     name = "admin"
     pass = "admintamaki"

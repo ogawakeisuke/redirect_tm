@@ -17,7 +17,7 @@
     <td><%= pairlink.id %></td>
     <td><%= url_omitize(pairlink.url) %></td>
     <td><%= pairlink.tamaki_url %></td>
-    <td><%= pairlink.digested_hash %></td>
+    <td><%= hash_omitize(pairlink.digested_hash) %></td>
     <td><%= pairlink.state ? pairlink.state : "?" %></td>
     <td><%= link_to 'Show', "home/#{pairlink.id}" %></td>
     <td><%= link_to 'Edit', "home/#{pairlink.id}/edit"%></td>
@@ -30,4 +30,4 @@
 
 <%= link_to 'New', :action =>"new" %>
 <br />
-<%= link_to 'all_destroy' %>
+<%= link_to 'destroy_all 超危険！押したら全部消える' ,"home", :confirm => '正気か?', :method => :delete %>
