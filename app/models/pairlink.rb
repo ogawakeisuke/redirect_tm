@@ -73,12 +73,12 @@ class Pairlink < ActiveRecord::Base
 
   def set_to_states
     return 0  if self.url.blank?
-    return 0  if self.url.to_s =~ /javascript/
-    return 0  if self.url.to_s =~ /<script>/
-    return 0  if self.url.to_s =~ /.*.rar/
-    return 0  if self.url.to_s =~ /.*.zip/
-    return 0  if self.url.to_s =~ /.*.exe/
-    return 0  if self.url.to_s =~ /.*.lzh/
+    return 0  if self.url.to_s =~ /javascript:.*/
+    return 0  if self.url.to_s =~ /.*<script>.*/
+    return 0  if self.url.to_s =~ /.*\.rar/
+    return 0  if self.url.to_s =~ /.*\.zip/
+    return 0  if self.url.to_s =~ /.*\.exe/
+    return 0  if self.url.to_s =~ /.*\.lzh/
 
     return 1 #all clear
   end
