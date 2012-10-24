@@ -41,7 +41,7 @@ class HomesController < ApplicationController
       redirect_url = redirect_url.normalize.to_s
       redirect_to(redirect_url)
     else
-      redirect_to :action=>'index'
+      redirect_to root_path
     end
   end
 
