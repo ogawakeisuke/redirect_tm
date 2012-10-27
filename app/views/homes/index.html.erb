@@ -1,28 +1,401 @@
-<div id="wrap" style="margin:0 auto;width:800px;">
-<h1 style="color: red;">たまきURL</h1>
-<br>
-  <form class="ajax_post" action="/homes/create" method="post">
-  		<div class="registerContent">				
-  			<fieldset class="name">
-  				<legend>おまえ今からURLいれろ:</legend>
-  				<label for="firstName">ここにURLいれろ:</label>
-  				<%=text_field_tag :native_url,"",:size=>"128"%>
-  			</fieldset>
-  		</div>
-  	<%= submit_tag "登録" %>
-  </form>
-  <br>
-  <div class="result"></div>
-  <br>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-  <table>
-  <tr bgcolor="#cccccc">
-    <th>たまきURL</th>
-   </tr>
-  <% @pairlinks.each do |pl|%>
-   	<tr align=center>
-        <td><%= link_to "#{request.protocol+""+""+request.host_with_port+pl.tamaki_url}"+"/" , "#{pl.url}",:target => "blank" %></td>
-   	</tr>
-   <%end%>
-  </table>
-</div>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>たまき短縮URL</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://tuxurecords.tumblr.com/rss" />
+    <link rel="icon" href="http://25.media.tumblr.com/avatar_fa116009887a_16.png" />
+
+<script type="text/javascript" src="http://tuxurecords.sakura.ne.jp/jquery.min.js"></script>
+<script type="text/javascript" src="http://platform.tumblr.com/v1/share.js"></script>
+<%= javascript_include_tag "application" %>
+<meta name="color:Links" content="#f47790"/>
+<meta name="color:Border" content="#ffffff"/>
+<meta name="if:Display Custom Links" content="0"/>
+<meta name="text:Link Title 1" content=""/>
+<meta name="text:Link URL 1" content=""/>
+<meta name="text:Link Title 2" content=""/>
+<meta name="text:Link URL 2" content=""/>
+<meta name="text:Link Title 3" content=""/>
+<meta name="text:Link URL 3" content=""/>
+<meta name="text:Link Title 4" content=""/>
+<meta name="text:Link URL 4" content=""/>
+
+<meta property="og:title" content="たまき短縮URL" />
+
+<meta property="og:site_name" content="つくしレコーズ" />
+<meta property="og:type" content="product" />
+<meta property="og:keywords" content="短縮URL,たまきEP2,たまき,櫻井珠希,つくしレコーズ,ネットレーベル,tuxurecords,つくしレコード,tukushi records"/>
+
+<meta property="fb:admins" content="100001726960606" />
+
+<script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
+
+    <style type="text/css">
+
+      
+* {
+   margin:0px;
+   padding:0;
+   border:0;
+   list-style-type:none; }
+
+  p { margin-top: 5px; }
+
+
+body {
+      background: #F5F5F5;
+      color:#000000;
+      font-family: Helvetica;
+      font-size: 11px;
+      text-align:center;
+      margin: 0
+    width:100%;
+
+ }
+
+
+#container {
+            margin:0px auto 0px;
+            text-align:left;
+      width: 100%;
+            }
+
+
+.post {
+       background: #ffffff;
+       border-width: 8px;
+       border-style: solid;
+       border-color: #ff0808;
+       float:left;
+       height:650;
+       padding:5px;
+       position:relative;
+       overflow: hidden;
+     text-align:left;
+       width:265px; 
+                box-shadow: 0px 0px 9px rgba(0,0,0,0.3);
+         -webkit-box-shadow: 0px 0px 9px rgba(0,0,0,0.3);
+         -moz-box-shadow: 0px 0px 9px rgba(0,0,0,0.3);}
+
+
+
+
+
+.image img {
+      margin:5px 0;
+      width:100%; }
+
+
+.image img:hover {
+      }
+
+.post .link a {
+               font-family: Impact;
+               font-size: 18px;
+               text-transform: uppercase; 
+               letter-spacing: 2px; }
+
+
+.post .link a:hover {
+                     font-family: Impact;
+                     font-size: 18px;
+                     text-transform: uppercase; 
+                     letter-spacing: 2px; }
+
+
+.even {
+  background:#f2f2f2; }
+
+
+      ol li {
+      list-style:none;
+      margin:0;
+      padding:0 0 5px
+      }
+      a {
+      color:#080808;
+                        text-decoration: none;
+      padding: 0px;
+      }
+      a:hover {
+      color:#000000;
+                        text-decoration: none;
+      padding: 0px;
+      }
+
+      .post a {
+      padding: 5px 0;
+      }
+      .post a:hover {
+      padding: 5px 0;
+      }
+
+      h1,h2,h3,h4,h5 {
+      font-family:Helvetica;
+      
+      }
+
+            .title {
+                        font-family: Impact;
+      color:#000000;
+      font-size:40px;
+      letter-spacing: 8px;
+      padding:0 0 9px;
+                        text-transform: uppercase;
+                        }
+      
+      h2 {
+      color:#dc5957;
+      font:normal 1.2em/1.8 Georgia, serif
+      }
+
+      #pages {
+      font-family:Helvetica;
+      font-size:14px;
+      text-align:center;
+                        text-transform: uppercase;
+      }
+
+      #pages a{
+      font-family:Helvetica;
+      font-size:14px;
+      text-align:center;
+                        text-transform: uppercase;
+                        color: #000000;
+      }
+
+      #pages a:hover{
+      font-family:Helvetica;
+      font-size:14px;
+      text-align:center;
+                        text-transform: uppercase;
+                        color: #080808;
+      }
+
+      #pages .centertext {
+      font-family:Helvetica;
+      font-size:10px;
+      text-align:center
+      }
+
+
+      .left {
+      float:left; margin: 5px;
+      }
+      .right {
+      float:right; margin: 5px;
+      }
+      .floatbreak {
+      clear:both
+      }
+      
+
+      .regular img {
+        max-width: 100%;
+      }
+
+
+.post .text { height: 630px;
+              overflow: hidden;
+              padding:0 5px; }
+
+
+body#permalink .post .text {height: auto; }
+
+
+#notes { width: 100%; }
+
+#header {
+  margin-bottom: -1px;
+  padding-left: 8px;
+  background:url(assets/header.png);
+  background-repeat: repeat-x;
+}
+
+#background {
+  padding-top: 20px;
+  background:url(assets/background.png);
+  background-repeat: repeat-x;
+  text-align:center;
+  width:100%;
+}
+
+#tamaki_title {
+  padding-top:90px;
+}
+
+
+#middle {
+  width: 825px;
+  position:relative;
+  margin: 0 auto;
+}
+
+#form {
+  height:48px;
+}
+
+input[type="text"] {
+  line-height: 30px;
+  border: 1px solid #999999;
+  width: 350px;
+  height: 28px;
+  font-size:14px;
+}
+
+input[type="submit"] {
+  margin-left:15px;
+  line-height: 30px;
+  border: 1px solid #999999;
+  width: 80px;
+  height: 32px;
+  font-size:14px;
+}
+
+textarea{
+  line-height: 20px;
+  margin: 16px 0 0 15px;
+  color: #000;
+  height: 45px;
+  font-size: 14px;
+  border: 1px solid rgb(204, 204, 204);
+  width: 690px;
+}
+
+#result {
+  height:90px;
+  background:url(assets/result.png);
+  background-repeat: repeat-x;
+  background-position: center top;
+  text-align: left;
+}
+
+#result .twitter-share-button {
+  margin:-10px 0 7px 15px;
+}
+
+#left {
+  float : left;
+  font-size:12px;
+}
+
+#left p {
+  text-align: left;
+}
+
+
+#left a {
+  color: #1ea7ff;
+}
+
+#left a:hover {
+  color: #fa8197;
+}
+
+#left a:visited {
+  color: #1ea7ff;
+}
+
+#right {
+  float : right; 
+}
+
+#footer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+    </style>
+<meta name="keywords" content="短縮URL,たまきEP2,たまき,櫻井珠希,つくしレコーズ,ネットレーベル,tuxurecords,つくしレコード,tukushi records" />
+<meta name="description" content="たまきEP2リリース記念特設ページ たまき短縮URL" />
+  <meta http-equiv="x-dns-prefetch-control" content="off"/></head>
+  <body>
+
+    <div id="container">
+      <div id="header">
+        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Ftuxurecords.tumblr.com%2Fpost%2F9498130981%2Fcircuit-bending-x-desktop-music&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-hashtags="tamakiep2">ツイート</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      <a href="http://tuxurecords.tumblr.com/" border="_blank" alt="つくしレコーズ" title="つくしレコーズ"><img border="0" style="position:absolute; right:0px; top:0px; margin:0px; padding:0px" src="assets/ribbon.png" /></a>
+      <div id="background">
+        <div id="tamaki_title">
+          <p><img src="assets/pre_title.png" alt="たまきEP2 リリース記念" title="たまきEP2 リリース記念"/></p>
+          <p><img src="assets/title.png" alt="たまき短縮URL" title="たまき短縮URL"/></p>
+        </div>
+      <div id="middle">
+        <div id="form">
+          <form class="ajax_post" action="/homes/create" method="post">
+          <%=text_field_tag :native_url,"",:size=>"128"%>
+          <%= submit_tag "URLを短縮" %>
+          </form>
+        </div>
+        
+        <div id="result">
+          <textarea onclick="this.focus();this.select()" cols="50" rows="3" readonly="">
+          </textarea>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="ochinchin" data-text=" " data-lang="ja" data-size="large" data-count="none" data-hashtags="tamaki_url">
+            ツイート
+          </a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        
+        <div id="left">
+          <% @pairlinks.each do |pl|%>
+          <p>
+            <%= link_to "#{request.protocol+""+""+request.host_with_port+pl.tamaki_url}"+"/" , "#{pl.url}",:target => "blank" %>
+          </p>
+          <%end%>
+        </div>
+        <div id="right">
+          <p><a href="#" alt="FreeDownload1" title="FreeDownload1"><img border="0" src="assets/freedownload1.png" /></a></p>
+          <p style="margin:13px 0;"><a href="#" alt="FreeDownload2" title="FreeDownload2"><img border="0" src="assets/freedownload2.png" /></a></p>
+          <div class="post">
+            <div class="left">11.03.12</div>
+            <div class="floatbreak"></div>
+            <div style="padding-left:5px;"><strong>たまき - キミにリダイレクト</strong></div>
+            <div class="image"><div class="text"> <p><img src="assets/jacket_500.jpg" alt="たまき - キミにリダイレクト" title="たまき - キミにリダイレクト"/></p>
+              <p>つくしレコーズ初のアイドルEP、 「たまきEP」を11/12の<a href="http://moejapan.jp/dearstage/topic/2011/11/2011.11.12%28%E5%9C%9F%29%E3%82%BF%E3%83%9E%E3%82%AD%E7%94%9F%E8%AA%95%E7%A5%AD%E3%80%8C%E3%81%9F%E3%81%BE%E3%81%8D%E3%81%9F%E3%82%93%E3%80%8D%20.php" target="_blank">たまき誕</a>を記念してリリース。<br />新曲「高まる気持ち。」に加えオリジナル曲「明日から本気出す(仮)」のumioバージョンを収録。</p>
+              <p><strong><a href="http://tuxurecords.sakura.ne.jp/zip/TUXU014.zip">Free Download1</a> </strong><strong><a href="http://www.mediafire.com/?3g1gjpc6gejjlbq">Free Download2</a></strong></p>
+              <br/>
+              <p><a href="http://tuxurecords.sakura.ne.jp/mp3/t1401.mp3">高まる気持ち。 作詞 タマキ 作曲 VIA</a><br />
+              <a href="http://tuxurecords.sakura.ne.jp/mp3/t1402.mp3">明日から本気出す（仮） umio ver.</a><br />
+              <a href="http://tuxurecords.sakura.ne.jp/mp3/t1403.mp3">高まる気持ち。　カラオケ ver.</a><br />
+              <a href="http://tuxurecords.sakura.ne.jp/mp3/t1404.mp3">明日から本気出す（仮） カラオケver.</a></p>
+              <br/>
+              <p>artwork by ミッキー世田谷<img style="width:31px;margin:0 0 -5px 0;"src="assets/http://art29.photozou.jp/pub/63/1204063/photo/108264449.png" width="31px" height="31px"  alt="ミッキー世田谷" title="ミッキー世田谷"/><br/>
+              <em><a href="http://msetagaya.tumblr.com/" target="_blank">http://msetagaya.tumblr.com/</a></em><br/>
+              photo by fueki satoru<br/>
+              <em><a href="http://collagara.tumblr.com/" target="_blank">http://collagara.tumblr.com/</a></em></p>
+              <br/>
+              <p>(Source: <a href="http://tuxurecords.tumblr.com/" title="tuxurecords">tuxurecords</a>)</p>
+              <br/>
+              <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Ftuxurecords.tumblr.com%2Fpost%2F9498130981%2Fcircuit-bending-x-desktop-music&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+              <a href="http://www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; background:url('assets/http://platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a>        </div></div>
+          </div>
+        </div>
+            </div>
+       <div class="floatbreak"></div>
+      <div style="clear:both"></div>
+      </div>
+    </div>
+        <div id="footer">
+        <p>Powered by <a target="_blank" href="http://tuxurecords.tumblr.com/">つくしレコーズ</a></p>
+      </div>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20163216-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>

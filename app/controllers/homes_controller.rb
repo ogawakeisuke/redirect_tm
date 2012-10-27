@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 class HomesController < ApplicationController
+  layout  :false
   require 'addressable/uri'
   before_filter :auth, :only => "index" #basic認証
 
