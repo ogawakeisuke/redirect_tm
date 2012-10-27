@@ -13,9 +13,13 @@ $(function(){
       success: function(data) {
 //        $("#result").hide("slow");
         if(data.result == 'OK'){
-          $("#result textarea").val(location.href + data.tamaki_url);
-          $("#result a data-url").val(location.href + data.tamaki_url);
-          $("#result").show("slow");
+          var result_url = location.href + data.tamaki_url
+          $("#result textarea").val(result_url);
+          
+          $('#result iframe').remove(); //分岐せずにremoveする  すこしダーティ
+          $('#result').append(' <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tamakiep.com/'+ data.tamaki_url +'/" data-text=" " data-lang="ja" data-size="large" data-count="none" data-hashtags="tamaki_url">ツイート</a>');//完全に邪悪
+          twttr.widgets.load();
+          $("#result").slideDown("slow");
           return false;
         };
         if(data.result == 'ERROR'){
@@ -31,4 +35,6 @@ $(function(){
   window.onload = function(){
     $("#result").hide();
   };
+
+  
 })
