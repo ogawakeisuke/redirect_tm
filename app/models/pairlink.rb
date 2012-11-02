@@ -27,8 +27,8 @@ class Pairlink < ActiveRecord::Base
 
   #本来model_varidatesで行う事をメソッドで二度手間かけてエラーjsonを作る目的
   def self.critical_validation(param)
-    return "なんか書け" if param.blank?
-    return "長過ぎ" if param.length >= 200
+    return "URLを入力してください" if param.blank?
+    return "sorry!!this URL is longer!!" if param.length >= 200
 
     return false #成功
   end
