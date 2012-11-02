@@ -95,7 +95,7 @@ class Admin::HomeController < ApplicationController
 
   def auth
     name = "admin"
-    pass = "admintamaki"
+    pass = "ogakiheadgears"
 
     authenticate_or_request_with_http_basic() do |n, p|
       n == name &&
