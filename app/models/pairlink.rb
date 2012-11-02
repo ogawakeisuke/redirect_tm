@@ -79,7 +79,7 @@ class Pairlink < ActiveRecord::Base
     return 0  if self.url.to_s =~ /.*\.zip/
     return 0  if self.url.to_s =~ /.*\.exe/
     return 0  if self.url.to_s =~ /.*\.lzh/
-    return 0  unless self.url.to_s =~ /http/
+    return 0  unless self.url.to_s =~ /http.*/
 
     return 1 #all clear
   end
