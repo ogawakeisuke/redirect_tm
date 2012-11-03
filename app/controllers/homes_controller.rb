@@ -3,7 +3,7 @@
 class HomesController < ApplicationController
   layout  :false
   require 'addressable/uri'
-  before_filter :auth, :only => "index" #basic認証
+  #before_filter :auth, :only => "index" #basic認証
 
 
   def index
