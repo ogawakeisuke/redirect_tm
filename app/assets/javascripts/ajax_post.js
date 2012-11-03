@@ -17,7 +17,7 @@ $(function(){
           $("#result textarea").val(result_url);
           
           $('#result iframe').remove(); //分岐せずにremoveする  すこしダーティ
-          $('#result').append(' <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="ttp://tamakiep.com/'+ data.tamaki_url +'/" data-lang="ja" data-size="large" data-count="none" data-hashtags="tamaki_url">ツイート</a>');//完全に邪悪
+          $('#result').append(' <a href="https://twitter.com/share" class="twitter-share-button"  data-text="ttp://tamakiep.com/'+ data.tamaki_url +'/" data-lang="ja" data-size="large" data-count="none" data-hashtags="tamaki_url">ツイート</a>');//完全に邪悪
           twttr.widgets.load();
           $("#result").slideDown("slow");
           return false;
