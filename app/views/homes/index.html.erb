@@ -342,7 +342,7 @@ textarea{
         <div id="left">
           <% @pairlinks.each do |pl|%>
           <p>
-            <%= link_to "#{request.protocol+""+""+request.host_with_port+pl.tamaki_url}"+"/" , "#{pl.url}",:target => "blank" %>
+            <%= link_to "#{request.protocol+""+""+request.host_with_port+"/"+pl.tamaki_url}"+"/" , "#{pl.url}",:target => "blank" %>
           </p>
           <%end%>
         </div>
